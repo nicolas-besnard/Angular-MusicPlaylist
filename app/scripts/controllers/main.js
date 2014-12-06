@@ -8,10 +8,8 @@
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, YoutubeVideoNotifications) {
+    $scope.playVideo = function () {
+      this.$broadcast(YoutubeVideoNotifications.Play);
+    }
   });
