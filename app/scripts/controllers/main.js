@@ -9,7 +9,5 @@
  */
 angular.module('musicPlaylistApp')
   .controller('MainCtrl', function ($scope, YoutubeVideoNotifications) {
-    $scope.playVideo = function () {
-      this.$broadcast(YoutubeVideoNotifications.Play);
-    }
+
   });
