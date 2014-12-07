@@ -8,6 +8,6 @@
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('PlayercontrolsCtrl', function ($scope, YoutubeVideoNotifications) {
+  .controller('PlayercontrolsCtrl', function () {
 
   });

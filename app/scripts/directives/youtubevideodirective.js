@@ -16,7 +16,7 @@ angular.module('musicPlaylistApp')
       {
 
         var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
+        tag.src = 'https://www.youtube.com/iframe_api';
 
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -34,6 +34,7 @@ angular.module('musicPlaylistApp')
 
         $window.onPlayerStateChange = function (event) {
           var state = event.data.toString();
+          console.debug('Player Event', playerStats[state]);
         };
 
         function updatePlayerInfo()
@@ -41,7 +42,7 @@ angular.module('musicPlaylistApp')
           PlayerLoaderTime.update(player.getCurrentTime(), player.getDuration());
         }
 
-        $window.onPlayerReady = function (data) {
+        $window.onPlayerReady = function () {
           $interval(updatePlayerInfo, 1000);
         };
 
@@ -51,6 +52,12 @@ angular.module('musicPlaylistApp')
 
         scope.$on(YoutubeVideoNotifications.Pause, function () {
           player.pauseVideo();
+        });
+
+        scope.$on(YoutubeVideoNotifications.GoTo, function (event, ratio) {
+          var totalDuration = player.getDuration();
+
+          player.seekTo(Math.round(ratio * totalDuration), true);
         });
 
         scope.$on(YoutubeVideoNotifications.ChangeVideo, function (event, videoId) {

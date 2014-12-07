@@ -15,9 +15,9 @@ angular.module('musicPlaylistApp')
       totalTime: 0,
       percentTotal: 0,
 
-      currentTimeHuman: "",
-      totalTimeHuman: "",
-    }
+      currentTimeHuman: '',
+      totalTimeHuman: '',
+    };
 
     function secByMinSec(sec) {
       var mins = Math.floor(sec / 60);
@@ -29,7 +29,7 @@ angular.module('musicPlaylistApp')
         secs = Math.floor(sec % 60);
       }
 
-      return mins+":"+secs;
+      return mins +':' +secs;
     }
 
     // Public API here
@@ -45,5 +45,5 @@ angular.module('musicPlaylistApp')
       //  }
       },
       time: time
-    }
+    };
   });

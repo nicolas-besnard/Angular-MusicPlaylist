@@ -31,13 +31,13 @@ angular.module('musicPlaylistApp')
 
         elem.on('click', '.play', function() {
           scope.$emit(YoutubeVideoNotifications.Play);
-          switchStat(this)
+          switchStat(this);
         });
 
         elem.on('click', '.pause', function () {
           scope.$emit(YoutubeVideoNotifications.Pause);
-          switchStat(this)
-        })
+          switchStat(this);
+        });
       }
     };
   });
