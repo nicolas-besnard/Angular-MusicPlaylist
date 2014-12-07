@@ -7,7 +7,7 @@
  * # YoutubeVideoDirective
  */
 angular.module('musicPlaylistApp')
-  .directive('youtubeVideo', function ($window, YoutubeVideoNotifications)
+  .directive('youtubeVideo', function ($window, YoutubeVideoNotifications, PlayerLoaderTime, $interval)
   {
     return {
       restrict: 'E',
@@ -34,9 +34,16 @@ angular.module('musicPlaylistApp')
 
         $window.onPlayerStateChange = function (event) {
           var state = event.data.toString();
-          console.log("Player state change", playerStats[state]);
         };
 
+        function updatePlayerInfo()
+        {
+          PlayerLoaderTime.update(player.getCurrentTime(), player.getDuration());
+        }
+
+        $window.onPlayerReady = function (data) {
+          $interval(updatePlayerInfo, 1000);
+        };
 
         scope.$on(YoutubeVideoNotifications.Play, function () {
           player.playVideo();
@@ -60,7 +67,8 @@ angular.module('musicPlaylistApp')
               controls: 1
             },
             events: {
-              'onStateChange': 'onPlayerStateChange'
+              'onStateChange': 'onPlayerStateChange',
+              'onReady': 'onPlayerReady'
             },
             height: 480,
             width: 600,
