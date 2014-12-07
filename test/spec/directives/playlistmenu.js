@@ -2,7 +2,7 @@
 
 describe('Directive: PlaylistMenu', function () {
 
-  // load the directive's module
+  // load the directives's module
   beforeEach(module('musicPlaylistApp'));
 
   var element,
@@ -15,6 +15,6 @@ describe('Directive: PlaylistMenu', function () {
   it('should make hidden element visible', inject(function ($compile) {
     element = angular.element('<-playlist-menu></-playlist-menu>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the PlaylistMenu directive');
+    expect(element.text()).toBe('this is the PlaylistMenu directives');
   }));
 });

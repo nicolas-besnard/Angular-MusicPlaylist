@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * @ngdoc directive
- * @name musicPlaylistApp.directive:PlayerControls
+ * @ngdoc directives
+ * @name musicPlaylistApp.directives:PlayerControls
  * @description
  * # PlayerControls
  */
@@ -10,7 +10,7 @@ angular.module('musicPlaylistApp')
   .directive('playerControls', function (YoutubeVideoNotifications) {
     return {
       restrict: 'E',
-      templateUrl: 'views/player-controls.html',
+      templateUrl: '../../../views/directives/player-controls.html',
       link: function(scope, elem)
       {
         function switchStat(btn)

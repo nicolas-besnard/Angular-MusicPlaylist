@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * @ngdoc directive
- * @name musicPlaylistApp.directive:YoutubeVideoDirective
+ * @ngdoc directives
+ * @name musicPlaylistApp.directives:YoutubeVideoDirective
  * @description
  * # YoutubeVideoDirective
  */

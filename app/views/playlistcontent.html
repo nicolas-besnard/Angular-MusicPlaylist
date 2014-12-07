@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+</div>
+
+<p>This is the playlistContent view.</p>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="music in musics">
+      <td ng-click="play('{{music.id}}')">play</td>
+      <td>{{music.title}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

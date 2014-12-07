@@ -20,6 +20,7 @@
 
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/custom.css">
     <link rel="stylesheet" href="styles/player.css">
     <!-- endbuild -->
@@ -60,7 +61,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <playlist-menu></playlist-menu>
+          <playlist-menu ng-controller="PlaylistCtrl"></playlist-menu>
           <player-controls ng-controller="PlayercontrolsCtrl"></player-controls>
           <player-loader ng-controller="PlayerloaderCtrl" current-time="{{currentTime}}" total-time="{{totalTime}}"></player-loader>
         </div>
@@ -98,12 +99,14 @@
     <script src="scripts/directives/youtubevideodirective.js"></script>
     <script src="scripts/services/youtubevideonotifications.js"></script>
     <script src="scripts/directives/playlistmenu.js"></script>
-    <script src="scripts/directives/playerloader.js"></script>
-    <script src="scripts/directives/playercontrols.js"></script>
-    <script src="scripts/controllers/playercontrols.js"></script>
-    <script src="scripts/controllers/playerloader.js"></script>
+    <script src="scripts/directives/player/playerloader.js"></script>
+    <script src="scripts/directives/player/playercontrols.js"></script>
+    <script src="scripts/controllers/player/playercontrols.js"></script>
+    <script src="scripts/controllers/player/playerloader.js"></script>
     <script src="scripts/services/playerloadertime.js"></script>
-    <script src="scripts/directives/playerloaderfront.js"></script>
+    <script src="scripts/directives/player/playerloaderfront.js"></script>
+    <script src="scripts/controllers/playlist.js"></script>
+    <script src="scripts/controllers/playlistcontent.js"></script>
 
     <!-- endbuild -->
   </body>

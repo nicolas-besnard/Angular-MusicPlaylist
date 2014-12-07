@@ -2,7 +2,7 @@
 
 describe('Directive: YoutubeVideoDirective', function () {
 
-  // load the directive's module
+  // load the directives's module
   beforeEach(module('musicPlaylistApp'));
 
   var element,
@@ -13,8 +13,8 @@ describe('Directive: YoutubeVideoDirective', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<-youtube-video-directive></-youtube-video-directive>');
+    element = angular.element('<-youtube-video-directives></-youtube-video-directives>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the YoutubeVideoDirective directive');
+    expect(element.text()).toBe('this is the YoutubeVideoDirective directives');
   }));
 });

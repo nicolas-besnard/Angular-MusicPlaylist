@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * @ngdoc directive
- * @name musicPlaylistApp.directive:PlayerLoaderFront
+ * @ngdoc directives
+ * @name musicPlaylistApp.directives:PlayerLoaderFront
  * @description
  * # PlayerLoaderFront
  */

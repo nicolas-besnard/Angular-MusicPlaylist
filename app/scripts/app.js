@@ -28,6 +28,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/playlist/:id', {
+        templateUrl: 'views/playlistcontent.html',
+        controller: 'PlaylistcontentCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
