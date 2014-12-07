@@ -8,6 +8,6 @@
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('PlaylistCtrl', function ($scope) {
-    $scope.playlists = ['titi', 'toto'];
+  .controller('PlaylistCtrl', function ($scope, Playlist) {
+    $scope.playlists = Playlist.playlists;
   });
