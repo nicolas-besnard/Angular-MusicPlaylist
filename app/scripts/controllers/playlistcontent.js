@@ -8,7 +8,7 @@
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('PlaylistcontentCtrl', function ($scope, $routeParams, YoutubeVideoNotifications) {
+  .controller('PlaylistcontentCtrl', function ($scope, $routeParams, YoutubeVideoService) {
     $scope.musics = [{
       id: 'Tdw7kxD8eUc',
       title: "AL Green - I'm So Tired of Being Alone"
@@ -19,7 +19,8 @@ angular.module('musicPlaylistApp')
 
     $scope.play = function(id) {
       console.log("PLAY", id);
-      this.$emit(YoutubeVideoNotifications.ChangeVideo, id);
+      YoutubeVideoService.launchPlayer(id, "title");
+      //this.$emit(YoutubeVideoNotifications.ChangeVideo, id);
     };
 
     $scope.id = $routeParams.id;

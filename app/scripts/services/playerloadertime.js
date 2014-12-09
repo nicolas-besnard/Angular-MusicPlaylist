@@ -16,7 +16,7 @@ angular.module('musicPlaylistApp')
       percentTotal: 0,
 
       currentTimeHuman: '',
-      totalTimeHuman: '',
+      totalTimeHuman: ''
     };
 
     function secByMinSec(sec) {

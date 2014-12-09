@@ -16,6 +16,7 @@ angular.module('musicPlaylistApp')
           var ratio = (event.pageX - $(this).offset().left) / $(this).outerWidth();
           scope.$emit(YoutubeVideoNotifications.GoTo, ratio);
         });
-      }
+      },
+      controller: 'PlayerloaderCtrl'
     };
   });

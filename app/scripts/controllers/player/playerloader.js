@@ -8,17 +8,16 @@
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('PlayerloaderCtrl', function ($scope, YoutubeVideoNotifications, PlayerLoaderTime) {
-    $scope.currentTime = 0;
-    $scope.totalTime = 0;
-    $scope.percentTotal = 0;
+  .controller('PlayerloaderCtrl', function ($scope, YoutubeVideoService) {
 
     $scope.$watch(function() {
-      return PlayerLoaderTime.time;
-    },
+        return YoutubeVideoService.youtube.currentTime;
+      },
       function (newValue) {
-        $scope.currentTime = newValue.currentTimeHuman;
-        $scope.totalTime = newValue.totalTimeHuman;
-        $scope.percentTotal = newValue.percentTotal;
-    }, true);
+        $scope.currentTime = YoutubeVideoService.youtube.currentTimeHuman;
+        $scope.totalTime = YoutubeVideoService.youtube.totalTimeHuman;
+        $scope.percentTotal = YoutubeVideoService.youtube.percentTotal;
+        $scope.percentTime = YoutubeVideoService.youtube.percentTime;
+      }, true);
+
   });

@@ -8,6 +8,10 @@
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('MainCtrl', function () {
-
+  .controller('MainCtrl', function ($scope, YoutubeVideoService) {
+    //$scope.youtube = YoutubeVideoService.getYoutube();
+    //$scope.results = YoutubeVideoService.getResults();
+    //$scope.upcoming = YoutubeVideoService.getUpcoming();
+    //$scope.history = YoutubeVideoService.getHistory();
+    //$scope.playlist = true;
   });
