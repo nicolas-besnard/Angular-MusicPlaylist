@@ -9,7 +9,7 @@
  */
 
 angular.module('musicPlaylistApp')
-  .service('YoutubeVideoService', function ($window, $rootScope, $log, $interval) {
+  .service('YoutubeVideoService', function ($window, $rootScope, $log, $interval, YoutubeVideoNotifications) {
     var service = this;
 
     this.youtube = {
@@ -35,6 +35,13 @@ angular.module('musicPlaylistApp')
       service.loadPlayer();
     };
 
+    $rootScope.$on(YoutubeVideoNotifications.Play, function() {
+      service.youtube.player.playVideo();
+    });
+
+    $rootScope.$on(YoutubeVideoNotifications.Pause, function() {
+      service.youtube.player.pauseVideo();
+    });
     /**
      * Bind player to element
      */

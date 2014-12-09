@@ -12,7 +12,6 @@ angular.module('musicPlaylistApp')
     return {
       'Play':        'YoutubeVideoPlayNotification',
       'Pause':       'YoutubeVideoPauseNotification',
-      'ChangeVideo': 'YoutubeVideoChangeVideoNotification',
       'GoTo':        'YoutubeVideoGoTo'
     };
   });
