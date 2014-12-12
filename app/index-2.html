@@ -104,10 +104,46 @@
             </a>
           </li>
           <li class="side-nav-item">
-            <a href="#/playlist/12">
-              <i class="nav-item-icon icon ion-social-rss-outline"></i>
-              Dashboard
+            <a href="#albums">
+              <i class="nav-item-caret"></i>
+              <i class="nav-item-icon icon ion-disc"></i>
+              Albums
             </a>
+            <ul id="albums" class="side-nav-child">
+              <li class="side-nav-item-heading">
+                <a href="#" class="side-nav-back">
+                  <i class="nav-item-caret"></i>
+                  Main Menu
+                </a>
+              </li><!-- /header layouts child -->
+              <li class="side-nav-item">
+                <a href="#/album/1">
+                  <i class="nav-item-icon icon ion-disc"></i>
+                  Album 1
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="side-nav-item">
+            <a href="#playlists">
+              <i class="nav-item-caret"></i>
+              <i class="nav-item-icon icon ion-headphone"></i>
+              Playlists
+            </a>
+            <ul id="playlists" class="side-nav-child">
+              <li class="side-nav-item-heading">
+                <a href="#" class="side-nav-back">
+                  <i class="nav-item-caret"></i>
+                  Main Menu
+                </a>
+              </li><!-- /header layouts child -->
+              <li class="side-nav-item">
+                <a href="#/playlist/1">
+                  <i class="nav-item-icon icon ion-headphone"></i>
+                  Playlist 1
+                </a>
+              </li>
+            </ul>
           </li>
           <!-- /coverage -->
         </ul>
@@ -287,15 +323,19 @@
             <div class="app-title pull-left" id="player-title">
               Title - Title
             </div>
-            <div class="app-title pull-right" id="player-progress-outer">
-              <div id="player-progress-loading"></div>
-              <div id="player-progress-playing"></div>
-            </div>
-          </div>
-          <!-- /app header -->
-        </div>
-        <!-- /content app -->
 
+            <!-- PLAYER LOADER -->
+            <player-loader
+              id="player-progress-outer"
+              class="app-title pull-right"
+              ng-controller="PlayerloaderCtrl"
+              current-time="{{currentTime}}"
+              total-time="{{totalTime}}">
+            </player-loader>
+            <!-- /PLAYER LOADER -->
+
+          </div>
+        </div>
       </section>
       <!-- /content main -->
 
