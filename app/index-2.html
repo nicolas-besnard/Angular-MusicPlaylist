@@ -28,12 +28,21 @@
 
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/syrena-admin.css">
+  <link rel="stylesheet" href="styles/player.css">
   <link rel="stylesheet" href="styles/full-app-content.css">
 
   <!-- endbuild -->
 </head>
 
 <body ng-app="musicPlaylistApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+<!--<youtube-video style="display: none" class=""></youtube-video>-->
+<div id="player" style="display: none;">
+  <div id="placeholder"></div>
+</div>
 <section id="wrapper" class="container">
   <!-- define side left theme -->
   <aside class="side-left">
@@ -269,20 +278,19 @@
 
         <!-- your app content -->
         <div class="content-app fixed-header">
-          <!-- app header -->
-          <!--<div class="app-header">-->
-          <!--<h3 class="app-title pull-left hidden-xs">Weekly Resume <small>Oct 30 - Nov 29, 2013</small></h3>-->
-          <!--</div>&lt;!&ndash; /app header &ndash;&gt;-->
 
-          <!-- app body -->
-          <div ng-view="" class="app-body">
-
-          </div>
+          <div ng-view="" class="app-body"></div>
 
           <div class="app-header">
-            <h3 class="app-title pull-left hidden-xs">Weekly Resume
-              <small>Oct 30 - Nov 29, 2013</small>
-            </h3>
+            <player-controls class="app-title pull-left" id="player-controls" ng-controller="PlayercontrolsCtrl"></player-controls>
+
+            <div class="app-title pull-left" id="player-title">
+              Title - Title
+            </div>
+            <div class="app-title pull-right" id="player-progress-outer">
+              <div id="player-progress-loading"></div>
+              <div id="player-progress-playing"></div>
+            </div>
           </div>
           <!-- /app header -->
         </div>

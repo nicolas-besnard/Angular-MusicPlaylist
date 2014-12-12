@@ -17,24 +17,28 @@ angular.module('musicPlaylistApp')
         {
           btn = angular.element(btn);
 
-          if (btn.hasClass('pause')) {
+          if (btn.hasClass('ion-pause')) {
             btn
+              .removeClass('ion-pause')
               .removeClass('pause')
+              .addClass('ion-play')
               .addClass('play');
           }
           else {
             btn
+              .removeClass('ion-play')
               .removeClass('play')
+              .addClass('ion-pause')
               .addClass('pause');
           }
         }
 
-        elem.on('click', '.play', function() {
+        elem.on('click', '.ion-play', function() {
           scope.$emit(YoutubeVideoNotifications.Play);
           switchStat(this);
         });
 
-        elem.on('click', '.pause', function () {
+        elem.on('click', '.ion-pause', function () {
           scope.$emit(YoutubeVideoNotifications.Pause);
           switchStat(this);
         });

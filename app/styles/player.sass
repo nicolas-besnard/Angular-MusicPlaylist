@@ -1,42 +1,42 @@
-.stick-to-bottom
-  position: absolute
+#player-controls
+  margin-left: 20px
+
+  & > i
+    width: 20px
+    font-size: 30px
+    margin: 5px
+    display: inline-block
+
+#player-title
+  margin-left: 20px
+  font-size: 20px
+
+#player-progress-outer
+  border: 1px solid #333
+  height: 37px
+  right: 25px
+  position: relative
+
+  width: 510px
+  padding: 15px
+
+$playerProgressHeight: 35px
+
+#player-progress-loading
+  background: #333
+  height: $playerProgressHeight
   left: 0
-  bottom: 0
+  top: 0
+  position: absolute
+  z-index: 5
+  cursor: pointer
+  width: 0%
+
+#player-progress-playing
+  background: #84c441
+  height: $playerProgressHeight
+  left: 0
+  top: 0
+  position: absolute
+  z-index: 9
   width: 100%
-
-.controls
-  bottom: 20px
-  text-align: center
-
-  .previous
-    width: 33.3%
-    float: left
-    background: green
-
-  .play
-    width: 33.3%
-    float: left
-    background: green
-
-  .pause
-    width: 33.3%
-    float: left
-    background: green
-
-  .next
-    width: 33.4%
-    float: left
-    background: green
-
-.loader
-  background: black
-
-  .front
-    background: red
-    height: 20px
-
-  .timer
-    float: left
-    text-align: center
-    width: 100%
-    color: white
