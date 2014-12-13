@@ -43,6 +43,13 @@ angular.module('musicPlaylistApp')
     $rootScope.$on(YoutubeVideoNotifications.Pause, function() {
       service.youtube.player.pauseVideo();
     });
+
+    $rootScope.$on(YoutubeVideoNotifications.GoTo, function(event, value) {
+      var totalTime = service.youtube.totalTime;
+      var goTo = value * totalTime;
+
+      service.youtube.player.seekTo(goTo);
+    });
     /**
      * Bind player to element
      */
@@ -89,7 +96,7 @@ angular.module('musicPlaylistApp')
         service.youtube.player.loadVideoById(id);
       }
     };
-    
+
     function secByMinSec(sec) {
       var mins = Math.floor(sec / 60);
       var secs = Math.floor(sec % 60);
