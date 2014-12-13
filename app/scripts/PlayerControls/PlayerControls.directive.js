@@ -11,7 +11,7 @@ angular.module('musicPlaylistApp')
   .directive('playerControls', function (CurrentPlaylist) {
     return {
       restrict: 'E',
-      templateUrl: 'scripts/PlayerControls/PlayerControls.html',
+      templateUrl: 'scripts/PlayerControls/PlayerControls.directive.html',
       link: function($scope, elem)
       {
         function switchStat(btn)
