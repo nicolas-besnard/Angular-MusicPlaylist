@@ -7,7 +7,7 @@
  * # PlayerLoader
  */
 angular.module('musicPlaylistApp')
-  .directive('playerProgress', function (YoutubeVideoNotifications) {
+  .directive('playerProgress', function (YoutubeVideoService) {
     return {
       restrict: 'E',
       templateUrl: 'scripts/PlayerProgress/PlayerProgress.html',
@@ -15,7 +15,7 @@ angular.module('musicPlaylistApp')
         elem.on('click', function(event) {
           var ratio = (event.pageX - $(this).offset().left) / $(this).outerWidth();
 
-          scope.$emit(YoutubeVideoNotifications.GoTo, ratio);
+          YoutubeVideoService.goTo(ratio);
         });
       },
       controller: 'PlayerProgressCtrl'

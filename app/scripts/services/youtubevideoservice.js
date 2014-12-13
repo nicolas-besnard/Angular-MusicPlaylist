@@ -36,20 +36,11 @@ angular.module('musicPlaylistApp')
       service.loadPlayer();
     };
 
-    $rootScope.$on(YoutubeVideoNotifications.Play, function() {
-      service.youtube.player.playVideo();
-    });
-
-    $rootScope.$on(YoutubeVideoNotifications.Pause, function() {
-      service.youtube.player.pauseVideo();
-    });
-
-    $rootScope.$on(YoutubeVideoNotifications.GoTo, function(event, value) {
+    this.goTo = function (ratio) {
       var totalTime = service.youtube.totalTime;
-      var goTo = value * totalTime;
-
+      var goTo = ratio * totalTime;
       service.youtube.player.seekTo(goTo);
-    });
+    }
     /**
      * Bind player to element
      */

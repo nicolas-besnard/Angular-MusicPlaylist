@@ -10,8 +10,6 @@
 angular.module('musicPlaylistApp')
   .factory('YoutubeVideoNotifications', function () {
     return {
-      'Play':  'YoutubeVideoPlayNotification',
-      'Pause': 'YoutubeVideoPauseNotification',
       'GoTo':  'YoutubeVideoGoTo'
     };
   });
