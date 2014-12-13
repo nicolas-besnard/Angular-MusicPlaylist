@@ -9,7 +9,7 @@
  */
 
 angular.module('musicPlaylistApp')
-  .service('YoutubeVideoService', function ($window, $rootScope, $log, $interval, YoutubeVideoNotifications) {
+  .service('YoutubeVideoService', function ($window, $rootScope, $log, $interval) {
     var service = this;
 
     this.youtube = {

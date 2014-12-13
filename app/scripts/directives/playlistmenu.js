@@ -10,6 +10,6 @@ angular.module('musicPlaylistApp')
   .directive('playlistMenu', function () {
     return {
       restrict: 'E',
-      templateUrl: '../../views/directives/playlist-menu.html'
+      templateUrl: '../RightMenu/PlaylistMenu/PlaylistMenu.html'
     };
   });
