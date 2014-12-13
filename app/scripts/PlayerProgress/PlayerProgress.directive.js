@@ -7,10 +7,10 @@
  * # PlayerLoader
  */
 angular.module('musicPlaylistApp')
-  .directive('playerLoader', function (YoutubeVideoNotifications) {
+  .directive('playerProgress', function (YoutubeVideoNotifications) {
     return {
       restrict: 'E',
-      templateUrl: '../../../views/directives/player-loader.html',
+      templateUrl: 'scripts/PlayerProgress/PlayerProgress.html',
       link: function (scope, elem) {
         elem.on('click', function(event) {
           var ratio = (event.pageX - $(this).offset().left) / $(this).outerWidth();
@@ -18,6 +18,6 @@ angular.module('musicPlaylistApp')
           scope.$emit(YoutubeVideoNotifications.GoTo, ratio);
         });
       },
-      controller: 'PlayerloaderCtrl'
+      controller: 'PlayerProgressCtrl'
     };
   });

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name musicPlaylistApp.controller:PlayerloaderCtrl
+ * @name musicPlaylistApp.controller:PlayerProgressCtrl
  * @description
- * # PlayerloaderCtrl
+ * # PlayerProgressCtrl
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('PlayerloaderCtrl', function ($scope, YoutubeVideoService) {
+  .controller('PlayerProgressCtrl', function ($scope, YoutubeVideoService) {
 
     $scope.$watch(function() {
         return YoutubeVideoService.youtube.currentTime;

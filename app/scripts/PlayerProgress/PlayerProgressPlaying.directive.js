@@ -7,7 +7,7 @@
  * # PlayerLoaderFront
  */
 angular.module('musicPlaylistApp')
-  .directive('playerLoaderFront', function () {
+  .directive('playerProgressPlaying', function () {
     return {
       restrict: 'A',
 
