@@ -12,7 +12,7 @@ angular.module('musicPlaylistApp')
     return {
       restrict: 'E',
       templateUrl: '../../../views/directives/player-controls.html',
-      link: function(scope, elem)
+      link: function($scope, elem)
       {
         function switchStat(btn)
         {
@@ -34,13 +34,21 @@ angular.module('musicPlaylistApp')
           }
         }
 
+        $scope.$on('player-controls:play', function () {
+          var btn = angular.element(elem).find('.play');
+
+          if (btn.hasClass('ion-play')) {
+            switchStat(btn);
+          }
+        });
+
         elem.on('click', '.ion-play', function() {
-          scope.$emit(YoutubeVideoNotifications.Play);
+          $scope.$emit(YoutubeVideoNotifications.Play);
           switchStat(this);
         });
 
         elem.on('click', '.ion-pause', function () {
-          scope.$emit(YoutubeVideoNotifications.Pause);
+          $scope.$emit(YoutubeVideoNotifications.Pause);
           switchStat(this);
         });
       }

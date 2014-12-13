@@ -94,6 +94,7 @@ angular.module('musicPlaylistApp')
       if (id != service.youtube.currentSongId) {
         service.youtube.currentSongId = id;
         service.youtube.player.loadVideoById(id);
+        $rootScope.$broadcast('player-controls:play');
       }
     };
 
