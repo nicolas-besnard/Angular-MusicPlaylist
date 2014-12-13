@@ -25,6 +25,11 @@ function CurrentPlaylist($rootScope, YoutubeVideoService) {
     addSong: addSong,
     removeSong: removeSong,
     playSong: playSong,
+    playNext: playNext,
+    playPrevious: playPrevious,
+    play: play,
+    pause: pause,
+
     songs: songs
   };
 
@@ -38,6 +43,8 @@ function CurrentPlaylist($rootScope, YoutubeVideoService) {
       "title": title
     });
     nbSongs += 1;
+
+    controlsState();
   }
 
   function removeSong(id, title) {
@@ -45,6 +52,8 @@ function CurrentPlaylist($rootScope, YoutubeVideoService) {
       return elem.id != id && elem.title != title
     });
     nbSongs -= 1;
+
+    controlsState();
   }
 
   function playSong(id) {
@@ -54,21 +63,52 @@ function CurrentPlaylist($rootScope, YoutubeVideoService) {
 
       YoutubeVideoService.launchPlayer(song.id, song.title);
 
-      if (currentSong + 1 == nbSongs) {
-        console.log("EMIT");
-        $rootScope.$broadcast('player-controls:song-forward', false);
+      controlsState();
+    }
+  }
 
-        if (nbSongs > 1) {
-          $rootScope.$broadcast('player-controls:song-backward', true);
-        }
+  function playNext() {
+    if (currentSong + 1 != nbSongs) {
+      playSong(currentSong + 1);
+    }
+  }
+
+  function playPrevious() {
+    if (currentSong - 1 >= 0) {
+      playSong(currentSong - 1);
+    }
+  }
+
+  function play() {
+    YoutubeVideoService.youtube.player.playVideo();
+  }
+
+  function pause() {
+    YoutubeVideoService.youtube.player.pauseVideo();
+  }
+
+  ////////////////
+  // PRIVATE
+  ////////////////
+
+  function controlsState() {
+    if (currentSong + 1 == nbSongs) {
+      $rootScope.$broadcast('player-controls:song-forward', false);
+
+      if (nbSongs > 1) {
+        $rootScope.$broadcast('player-controls:song-backward', true);
       }
+    }
 
-      if (currentSong == 0) {
-        $rootScope.$broadcast('player-controls:song-backward', false);
+    if (currentSong + 1 < nbSongs) {
+      $rootScope.$broadcast('player-controls:song-forward', true);
+    }
 
-        if (nbSongs > 1) {
-          $rootScope.$broadcast('player-controls:song-forward', true);
-        }
+    if (currentSong == 0) {
+      $rootScope.$broadcast('player-controls:song-backward', false);
+
+      if (nbSongs > 1) {
+        $rootScope.$broadcast('player-controls:song-forward', true);
       }
     }
   }

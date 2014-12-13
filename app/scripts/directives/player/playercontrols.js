@@ -8,7 +8,7 @@
  */
 
 angular.module('musicPlaylistApp')
-  .directive('playerControls', function (YoutubeVideoNotifications) {
+  .directive('playerControls', function (CurrentPlaylist) {
     return {
       restrict: 'E',
       templateUrl: '../../../views/directives/player-controls.html',
@@ -44,7 +44,7 @@ angular.module('musicPlaylistApp')
 
         $scope.$on('player-controls:song-forward', function (event, hasSong) {
           var btn = angular.element(elem).find('.forward');
-          console.log("RECEIVE");
+
           if (hasSong && btn.hasClass('no-song')) {
             btn.removeClass('no-song');
           }
@@ -64,13 +64,21 @@ angular.module('musicPlaylistApp')
           }
         });
 
+        $scope.playNext = function () {
+          CurrentPlaylist.playNext();
+        };
+
+        $scope.playPrevious = function () {
+          CurrentPlaylist.playPrevious();
+        };
+
         elem.on('click', '.ion-play', function() {
-          $scope.$emit(YoutubeVideoNotifications.Play);
+          CurrentPlaylist.play();
           switchStat(this);
         });
 
         elem.on('click', '.ion-pause', function () {
-          $scope.$emit(YoutubeVideoNotifications.Pause);
+          CurrentPlaylist.pause();
           switchStat(this);
         });
       }
