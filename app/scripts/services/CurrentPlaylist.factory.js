@@ -1,3 +1,5 @@
+'use strict';
+
 angular
   .module('musicPlaylistApp')
   .factory('CurrentPlaylist', CurrentPlaylist);
@@ -48,7 +50,7 @@ function CurrentPlaylist($rootScope, YoutubeVideoService) {
   }
 
   function removeSong(id, title) {
-    song = songs.filter(function (elem) {
+    songs = songs.filter(function (elem) {
       return elem.id != id && elem.title != title
     });
     nbSongs -= 1;
