@@ -4,7 +4,8 @@ angular
   .module('musicPlaylistApp')
   .factory('CurrentPlaylist', CurrentPlaylist);
 
-CurrentPlaylist.$inject = ['$rootScope', 'YoutubeVideoService']
+CurrentPlaylist.$inject = ['$rootScope', 'YoutubeVideoService'];
+
 /* @ngInject */
 function CurrentPlaylist($rootScope, YoutubeVideoService) {
 

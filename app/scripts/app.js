@@ -30,7 +30,7 @@ angular
         controller: 'AboutCtrl'
       })
       .when('/playlist/:id', {
-        templateUrl: 'views/playlistcontent.html',
+        templateUrl: 'scripts/CurrentPlaylist/CurrentPlaylist.html',
         controller: 'PlaylistcontentCtrl'
       })
       .otherwise({
