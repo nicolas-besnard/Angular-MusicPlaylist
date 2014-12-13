@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: PlaylistcontentCtrl', function () {
+describe('Controller: PlaylistCtrl', function () {
 
   // load the controller's module
   beforeEach(module('musicPlaylistApp'));

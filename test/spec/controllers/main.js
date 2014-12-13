@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: DashboardCtrl', function () {
 
   // load the controller's module
   beforeEach(module('musicPlaylistApp'));

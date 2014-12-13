@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name musicPlaylistApp.controller:PlaylistcontentCtrl
+ * @name musicPlaylistApp.controller:PlaylistCtrl
  * @description
- * # PlaylistcontentCtrl
+ * # PlaylistCtrl
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('PlaylistcontentCtrl', function ($scope, $routeParams, YoutubeVideoService, CurrentPlaylist) {
+  .controller('PlaylistCtrl', function ($scope, $routeParams, YoutubeVideoService, CurrentPlaylist) {
     $scope.musics = [{
       id: 'Tdw7kxD8eUc',
       title: "AL Green - I'm So Tired of Being Alone"

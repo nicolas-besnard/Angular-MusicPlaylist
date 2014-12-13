@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name musicPlaylistApp.controller:MainCtrl
+ * @name musicPlaylistApp.controller:DashboardCtrl
  * @description
- * # MainCtrl
+ * # DashboardCtrl
  * Controller of the musicPlaylistApp
  */
 angular.module('musicPlaylistApp')
-  .controller('MainCtrl', function ($scope, YoutubeVideoService) {
+  .controller('DashboardCtrl', function ($scope, YoutubeVideoService) {
     //$scope.youtube = YoutubeVideoService.getYoutube();
     //$scope.results = YoutubeVideoService.getResults();
     //$scope.upcoming = YoutubeVideoService.getUpcoming();
