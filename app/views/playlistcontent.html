@@ -14,7 +14,8 @@
     </thead>
     <tbody>
     <tr ng-repeat="music in musics">
-      <td ng-click="play('{{music.id}}')">play</td>
+      <td ng-click="addToCurrentPlaylist(music.id, music.title)">AddToPlaylist</td>
+      <td ng-click="play(music.id)">play</td>
       <td>{{music.title}}</td>
     </tr>
     </tbody>

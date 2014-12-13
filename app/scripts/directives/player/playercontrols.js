@@ -6,6 +6,7 @@
  * @description
  * # PlayerControls
  */
+
 angular.module('musicPlaylistApp')
   .directive('playerControls', function (YoutubeVideoNotifications) {
     return {

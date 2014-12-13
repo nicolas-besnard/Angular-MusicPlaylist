@@ -25,7 +25,8 @@ angular.module('musicPlaylistApp')
       currentTime: 0,
       totalTime: 0,
       currentTimeHuman: '0:00',
-      totalTimeHuman: '0:00'
+      totalTimeHuman: '0:00',
+      currentSongId: ''
     };
 
     $window.onYouTubeIframeAPIReady = function () {
@@ -83,9 +84,12 @@ angular.module('musicPlaylistApp')
     };
 
     this.launchPlayer = function (id, title) {
-      service.youtube.player.loadVideoById(id);
+      if (id != service.youtube.currentSongId) {
+        service.youtube.currentSongId = id;
+        service.youtube.player.loadVideoById(id);
+      }
     };
-
+    
     function secByMinSec(sec) {
       var mins = Math.floor(sec / 60);
       var secs = Math.floor(sec % 60);

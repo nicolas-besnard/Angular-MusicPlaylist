@@ -339,43 +339,36 @@
       </section>
       <!-- /content main -->
 
-      <!-- define your extra apps here -->
-      <!-- (recomended: dont change the id value) -->
       <section id="content-aside" class="content-aside">
-        <!-- your module content -->
         <div class="content-module fixed-header">
-          <!-- module header -->
+
           <div class="module-header">
-            <h3 class="module-title">Playlist</h3>
+            <h3 class="module-title">Current Playlist</h3>
           </div>
-          <!-- /module header -->
 
-          <!-- module body -->
           <div class="module-body">
-
-            <!-- app module here -->
-            <!-- chat module -->
             <div class="chats-module">
-              <div class="cm-contact">
+              <div class="cm-contact" ng-controller="CurrentPlaylistCtrl as currentPlaylist">
                 <div class="cm-contact-separate">Musics</div>
-                <a href="#" class="cm-contact-item">
+
+                <!-- CELL -->
+                <a href="" class="cm-contact-item" ng-repeat="song in currentPlaylist.songs" ng-click="currentPlaylist.play(song.id, song.artist, song.title)">
                   <div class="cmci-avatar">
-                    <img src="assets/app/img/avatar8.png" alt="">
+                    <img ng-src="{{song.artwork}}" alt="">
                   </div>
-                  <p class="cmci-name">Iin Bent
-                    <small>Team Leader</small>
+                  <p class="cmci-name">{{song.title}}
+                    <small>{{song.artist}}</small>
                   </p>
                 </a>
+                <!-- /CELL -->
+
               </div>
-              <!-- /chat module contact -->
             </div>
-            <!-- /module content -->
           </div>
-          <!-- /content module -->
+        </div>
+
       </section>
-      <!-- /content asside -->
     </div>
-    <!-- /content spliter -->
 
   </section>
   <!-- /content -->
@@ -414,6 +407,7 @@
 <script src="scripts/controllers/player/playerloader.js"></script>
 <script src="scripts/controllers/playlist.js"></script>
 <script src="scripts/controllers/playlistcontent.js"></script>
+<script src="scripts/controllers/CurrentPlaylist.controller.js"></script>
 
 <script src="scripts/directives/playlistmenu.js"></script>
 <script src="scripts/directives/player/playerloader.js"></script>
@@ -424,6 +418,7 @@
 <script src="scripts/services/youtubevideonotifications.js"></script>
 <script src="scripts/services/playlist.js"></script>
 <script src="scripts/services/youtubevideoservice.js"></script>
+<script src="scripts/services/CurrentPlaylist.factory.js"></script>
 <!-- endbuild -->
 
 
