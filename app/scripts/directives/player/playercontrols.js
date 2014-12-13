@@ -42,6 +42,28 @@ angular.module('musicPlaylistApp')
           }
         });
 
+        $scope.$on('player-controls:song-forward', function (event, hasSong) {
+          var btn = angular.element(elem).find('.forward');
+          console.log("RECEIVE");
+          if (hasSong && btn.hasClass('no-song')) {
+            btn.removeClass('no-song');
+          }
+          else if (!hasSong && !btn.hasClass('no-song')) {
+            btn.addClass('no-song');
+          }
+        });
+
+        $scope.$on('player-controls:song-backward', function (event, hasSong) {
+          var btn = angular.element(elem).find('.backward');
+
+          if (hasSong && btn.hasClass('no-song')) {
+            btn.removeClass('no-song');
+          }
+          else if (!hasSong && !btn.hasClass('no-song')) {
+            btn.addClass('no-song');
+          }
+        });
+
         elem.on('click', '.ion-play', function() {
           $scope.$emit(YoutubeVideoNotifications.Play);
           switchStat(this);

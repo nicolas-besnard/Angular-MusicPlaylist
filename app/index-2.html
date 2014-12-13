@@ -352,7 +352,7 @@
                 <div class="cm-contact-separate">Musics</div>
 
                 <!-- CELL -->
-                <a href="" class="cm-contact-item" ng-repeat="song in currentPlaylist.songs" ng-click="currentPlaylist.play(song.id, song.artist, song.title)">
+                <a href="" class="cm-contact-item" ng-repeat="song in currentPlaylist.songs" ng-click="currentPlaylist.play($index)">
                   <div class="cmci-avatar">
                     <img ng-src="{{song.artwork}}" alt="">
                   </div>
