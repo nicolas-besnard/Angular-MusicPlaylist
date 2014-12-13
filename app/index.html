@@ -1,98 +1,471 @@
-<!doctype html>
-<html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="musicPlaylistApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes"/>
+  <title>Music Playlist</title>
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+  <!-- fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/app/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/app/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/app/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/app/ico/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="assets/app/ico/favico.png">
+  <link rel="shortcut icon" href="assets/app/ico/favico.ico">
+
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css"/>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/syrena-admin.css">
+  <link rel="stylesheet" href="styles/player.css">
+  <link rel="stylesheet" href="styles/full-app-content.css">
+
+  <!-- endbuild -->
+</head>
+
+<body ng-app="musicPlaylistApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+<!--<youtube-video style="display: none" class=""></youtube-video>-->
+<div id="player" style="display: none;">
+  <div id="placeholder"></div>
+</div>
+<section id="wrapper" class="container">
+  <!-- define side left theme -->
+  <aside class="side-left">
+    <!-- side header -->
+    <div class="side-header">
+      <!-- place your brand (recomended: dont change the id value) -->
+      <!-- (recomended: dont change the id value) -->
+      <h1 id="brand" class="brand">
+        <a href="index.html">
+          Music
+        </a>
+      </h1><!-- /brand -->
+
+      <!-- form search, remove class hide if you not place your brand -->
+      <!-- (recomended: dont change the id value) -->
+      <form id="smart-search" class="side-form hide" role="form">
+        <input type="text" class="form-control" data-target=".side-wrapper" placeholder="Smart Finder">
+      </form>
+      <!-- /side wrapper -->
+    </div>
+    <!-- /side header -->
+
+    <!-- side body -->
+    <div class="side-body">
+      <!-- this you can place your search result with ajax -->
+      <div class="side-wrapper side-wrapper-large">
+        <div class="side-wrapper-status lead">No result, please start typing!</div>
+        <div class="side-wrapper-result">
+          <!-- just sample result -->
+
+
+          <div class="panel panel-default bordered-none no-radius">
+            <a href="#" class="panel-body-heading full-line">
+              <div class="pb-object pb-object-circle pb-object-sm">
+                <!--<img src="assets/app/img/avatar3.png" alt="">-->
+              </div>
+              <!-- /pb-object -->
+              <h3 class="pb-title pb-title-sm">
+                Item name
+                <small>Lorem ipsum dolor sit amet, consectetur</small>
+              </h3>
+              <!-- /pb-title -->
+            </a><!-- /panel-body-heading -->
+          </div>
+          <!-- /panel -->
+        </div>
+        <!-- /side-wrapper-result -->
+      </div>
+      <!-- /side wrapper -->
+
+      <!-- separate nav for ease development -->
+      <nav class="side-nav">
+        <!-- open nav ul -->
+        <ul>
+          <li class="side-nav-item active">
+            <a href="#/">
+              <i class="nav-item-icon icon ion-social-rss-outline"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="side-nav-item">
+            <a href="#albums">
+              <i class="nav-item-caret"></i>
+              <i class="nav-item-icon icon ion-disc"></i>
+              Albums
+            </a>
+            <ul id="albums" class="side-nav-child">
+              <li class="side-nav-item-heading">
+                <a href="#" class="side-nav-back">
+                  <i class="nav-item-caret"></i>
+                  Main Menu
+                </a>
+              </li><!-- /header layouts child -->
+              <li class="side-nav-item">
+                <a href="#/album/1">
+                  <i class="nav-item-icon icon ion-disc"></i>
+                  Album 1
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="side-nav-item">
+            <a href="#playlists">
+              <i class="nav-item-caret"></i>
+              <i class="nav-item-icon icon ion-headphone"></i>
+              Playlists
+            </a>
+            <ul id="playlists" class="side-nav-child">
+              <li class="side-nav-item-heading">
+                <a href="#" class="side-nav-back">
+                  <i class="nav-item-caret"></i>
+                  Main Menu
+                </a>
+              </li><!-- /header layouts child -->
+              <li class="side-nav-item">
+                <a href="#/playlist/1">
+                  <i class="nav-item-icon icon ion-headphone"></i>
+                  Playlist 1
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- /coverage -->
         </ul>
-        <h3 class="text-muted">musicPlaylist</h3>
-      </div>
+        <!-- /nav ul-->
+      </nav>
 
-      <div ng-view=""></div>
+    </div>
+    <!-- /side body -->
+  </aside>
+  <!-- /side left -->
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+  <!-- define content theme, use data-swipe="true" to enable gesture event -->
+  <!-- (recomended: dont change the id value) -->
+  <section id="content" class="content">
+    <!-- define your content header here -->
+    <header class="content-header">
+      <!-- header actions -->
+      <div class="header-actions pull-right">
+        <!-- (recomended: dont change the id value) -->
+        <div class="btn-group">
+          <a id="notif-alerts" class="btn btn-icon hide-sm dropdown-toggle" data-toggle="dropdown" role="button">
+            <i class="icon ion-alert-circled"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-extend pull-right" role="menu">
+            <li class="dropdown-header">Notofications</li>
+            <!-- /dropdown-header -->
+            <li class="notif-minimal">
+              <a class="notif-item" href="#">
+                <div class="notif-ico bg-danger">
+                  <i class="icon ion-ios7-heart-outline"></i>
+                </div>
+                <p class="notif-text"><span class="text-danger">Mr. Doe</span> favorite your Post</p>
+              </a><!-- /notif-item -->
+              <a class="notif-item" href="#">
+                <div class="notif-ico bg-warning">
+                  <i class="icon ion-ios7-personadd-outline"></i>
+                </div>
+                <p class="notif-text"><span class="text-warning">Iin T</span> register as a Member</p>
+              </a><!-- /notif-item -->
+              <a class="notif-item" href="#">
+                <div class="notif-ico bg-success">
+                  <i class="icon ion-ios7-heart-outline"></i>
+                </div>
+                <p class="notif-text"><span class="text-success">Harab</span> purchase an Item</p>
+              </a><!-- /notif-item -->
+              <a class="notif-item" href="#">
+                <div class="notif-ico bg-danger">
+                  <i class="icon ion-ios7-chatbubble-outline"></i>
+                </div>
+                <p class="notif-text"><span class="text-danger">Pathoel</span> Comment on your Post</p>
+              </a><!-- /notif-item -->
+              <a class="notif-item" href="#">
+                <div class="notif-ico bg-info">
+                  <i class="icon ion-social-twitter-outline"></i>
+                </div>
+                <p class="notif-text"><span class="text-info">Imran</span> is now following you</p>
+              </a><!-- /notif-item -->
+              <a class="notif-item" href="#">
+                <div class="notif-ico bg-success">
+                  <i class="icon ion-ios7-cloud-upload-outline"></i>
+                </div>
+                <p class="notif-text"><span class="text-success">Bent</span> upload new Portofolio</p>
+              </a><!-- /notif-item -->
+            </li>
+            <!-- /dropdown-alert -->
+            <li class="dropdown-footer">
+              <a class="view-all" tabindex="-1" href="#">
+                <i class="icon ion-ios7-arrow-thin-right pull-right"></i> See all notifications
+              </a>
+            </li>
+            <!-- /dropdown-footer -->
+          </ul>
+          <!-- /dropdown-extend -->
+        </div>
+        <!-- /btn-group notifications -->
+
+        <!-- (recomended: dont change the id value) -->
+        <div class="btn-group">
+          <a id="notif-messages" class="btn btn-icon hide-sm dropdown-toggle active" data-toggle="dropdown"
+             role="button">
+            <i class="icon ion-chatboxes"></i>
+            <span class="badge">3</span>
+          </a>
+          <ul class="dropdown-menu dropdown-extend pull-right" role="menu">
+            <li class="dropdown-header">You have 3 new messages</li>
+            <!-- /dropdown-header -->
+            <li class="notif-media">
+              <!-- /notif-item -->
+            </li>
+            <!-- /dropdown-alert -->
+            <li class="dropdown-footer">
+              <a class="view-all" tabindex="-1" href="messages.html">
+                <i class="icon ion-ios7-arrow-thin-right pull-right"></i> See all messages
+              </a>
+            </li>
+            <!-- /dropdown-footer -->
+          </ul>
+          <!-- /dropdown-extend -->
+        </div>
+        <!-- /btn-group new messages -->
+
+        <!-- (recomended: dont change the id value) -->
+        <div class="btn-group">
+          <a id="users-setting" class="btn btn-icon data-toggle" data-toggle="dropdown" role="button">
+            <i class="icon ion-gear-b"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-extend pull-right" role="menu">
+            <li class="dropdown-profile">
+              <div class="dp-cover">
+                <!--<img class="img-bg" src="assets/app/img/cover-blur.jpg" alt="">-->
+                <a class="img-avatar" href="page_profile.html">
+                  <!--<img class="img-circle" src="assets/app/img/avatar4.png" alt="">-->
+                </a>
+
+                <div class="dp-details">Mr. Doe - UI Designer</div>
+              </div>
+            </li>
+            <li>
+              <div class="row text-center">
+                <a href="#" class="col-lg-4 col-sm-4 col-sm-4 col-xs-4">138
+                  <small>Posts</small>
+                </a>
+                <a href="#" class="col-lg-4 col-sm-4 col-sm-4 col-xs-4">26
+                  <small>Items</small>
+                </a>
+                <a href="#" class="col-lg-4 col-sm-4 col-sm-4 col-xs-4">570
+                  <small>Follow</small>
+                </a>
+              </div>
+            </li>
+            <li class="dropdown-footer">
+              <div class="clearfix">
+                <a href="page_signin.html" class="btn btn-sm btn-default pull-right">Sign out</a>
+                <a href="page_profile.html" class="btn btn-sm btn-default pull-left">Profile</a>
+              </div>
+            </li>
+            <!-- /dropdown-footer -->
+          </ul>
+          <!-- /dropdown-extend -->
+        </div>
+        <!-- /btn-group setting -->
+
+        <!-- (recomended: dont change the id value) -->
+        <a id="toggle-aside" class="btn btn-icon" role="button"><i class="icon ion-navicon-round"></i></a>
       </div>
+      <!-- /header actions -->
+
+      <!-- header actions -->
+      <div class="header-actions pull-left">
+        <!-- (recomended: dont change the id value) -->
+        <button id="toggle-content" class="btn btn-icon" type="button"><i class="icon ion-navicon-round"></i></button>
+        <!-- (recomended: dont change the id value) -->
+        <button id="toggle-search" class="btn btn-icon" type="button"><i class="icon ion-search"></i></button>
+      </div>
+      <!-- /header actions -->
+
+      <!-- your Awesome App title -->
+      <h1 class="content-title">Dashboard</h1>
+    </header>
+    <!-- /side left -->
+
+
+    <!-- define content row -->
+    <div class="content-spliter">
+      <!-- define your awesome apps here -->
+      <!-- (recomended: dont change the id value) -->
+      <section id="content-main" class="content-main">
+
+        <!-- your app content -->
+        <div class="content-app fixed-header">
+
+          <div ng-view="" class="app-body"></div>
+
+          <div class="app-header">
+            <player-controls class="app-title pull-left" id="player-controls" ng-controller="PlayercontrolsCtrl"></player-controls>
+
+            <div class="app-title pull-left" id="player-title">
+              Title - Title
+            </div>
+
+            <!-- PLAYER LOADER -->
+            <player-loader
+              id="player-progress-outer"
+              class="app-title pull-right"
+              ng-controller="PlayerloaderCtrl"
+              current-time="{{currentTime}}"
+              total-time="{{totalTime}}">
+            </player-loader>
+            <!-- /PLAYER LOADER -->
+
+          </div>
+        </div>
+      </section>
+      <!-- /content main -->
+
+      <section id="content-aside" class="content-aside">
+        <div class="content-module fixed-header">
+
+          <div class="module-header">
+            <h3 class="module-title">Current Playlist</h3>
+          </div>
+
+          <div class="module-body">
+            <div class="chats-module">
+              <div class="cm-contact" ng-controller="CurrentPlaylistCtrl as currentPlaylist">
+                <div class="cm-contact-separate">Musics</div>
+
+                <!-- CELL -->
+                <a href="" class="cm-contact-item" ng-repeat="song in currentPlaylist.songs" ng-click="currentPlaylist.play($index)">
+                  <div class="cmci-avatar">
+                    <img ng-src="{{song.artwork}}" alt="">
+                  </div>
+                  <p class="cmci-name">{{song.title}}
+                    <small>{{song.artist}}</small>
+                  </p>
+                </a>
+                <!-- /CELL -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
     </div>
 
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
-
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/services/youtubevideonotifications.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+  </section>
+  <!-- /content -->
+</section>
+<!-- /wrapper -->
 
 
-        <script src="scripts/directives/playlistmenu.js"></script>
-        <script src="scripts/directives/player/playerloader.js"></script>
-        <script src="scripts/directives/player/playercontrols.js"></script>
-        <script src="scripts/controllers/player/playercontrols.js"></script>
-        <script src="scripts/controllers/player/playerloader.js"></script>
-        <script src="scripts/services/playerloadertime.js"></script>
-        <script src="scripts/directives/player/playerloaderfront.js"></script>
-        <script src="scripts/controllers/playlist.js"></script>
-        <script src="scripts/controllers/playlistcontent.js"></script>
-        <script src="scripts/services/playlist.js"></script>
-        <script src="scripts/services/youtubevideoservice.js"></script>
-        <script src="scripts/controllers/CurrentPlaylist.controller.js"></script>
-        <!-- endbuild -->
+<!-- build:js(.) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/player/playercontrols.js"></script>
+<script src="scripts/controllers/player/playerloader.js"></script>
+<script src="scripts/controllers/playlist.js"></script>
+<script src="scripts/controllers/playlistcontent.js"></script>
+<script src="scripts/controllers/CurrentPlaylist.controller.js"></script>
+
+<script src="scripts/directives/playlistmenu.js"></script>
+<script src="scripts/directives/player/playerloader.js"></script>
+<script src="scripts/directives/player/playercontrols.js"></script>
+<script src="scripts/directives/player/playerloaderfront.js"></script>
+
+<script src="scripts/services/youtubevideonotifications.js"></script>
+<script src="scripts/services/playlist.js"></script>
+<script src="scripts/services/youtubevideoservice.js"></script>
+<script src="scripts/services/CurrentPlaylist.factory.js"></script>
+<!-- endbuild -->
+
+
+<!-- theme app main.js -->
+<!-- <script src="assets/app/js/main.js"></script> -->
+<script type="text/javascript">
+  $(function () {
+    $('#toggle-content').on('click', function (e) {
+      e.preventDefault();
+
+      var content = $('#content');
+
+      // $(this).toggleClass('active');
+
+      content.toggleClass('content-lg');
+
+      // kiye kerjake!
+      $('#toggle-search').toggleClass('hide'); // handle visibility search button
+    });
+
+    $('#toggle-aside').on('click', function (e) {
+      e.preventDefault();
+
+      var $this = $(this),
+          content_main = $('#content-main'),
+          content_aside = $('#content-aside');
+
+      $this.toggleClass('active');
+      content_main.toggleClass('content-main-md');
+      content_aside.toggleClass('open');
+    })
+
+    $('.side-nav-child').prev().on('click', function (e) {
+      e.preventDefault();
+
+      var $this = $(this),
+          target = $this.attr('href');
+
+      $(target).addClass('open');
+    })
+    $('.side-nav-back').on('click', function (e) {
+      e.preventDefault();
+      var $this = $(this),
+          target = $this.parent().parent();
+
+      $(target).removeClass('open');
+    })
+  });
+</script>
 </body>
 </html>
