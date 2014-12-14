@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: PlaylistMenu', function () {
+describe('Directive: PlaylistsMenu', function () {
 
   // load the directives's module
   beforeEach(module('musicPlaylistApp'));
@@ -15,6 +15,6 @@ describe('Directive: PlaylistMenu', function () {
   it('should make hidden element visible', inject(function ($compile) {
     element = angular.element('<-playlist-menu></-playlist-menu>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the PlaylistMenu directives');
+    expect(element.text()).toBe('this is the PlaylistsMenu directives');
   }));
 });

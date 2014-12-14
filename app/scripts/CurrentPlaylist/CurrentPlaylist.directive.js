@@ -8,7 +8,9 @@ function CurrentPlaylist() {
   var directive = {
     link: link,
     templateUrl: 'scripts/CurrentPlaylist/CurrentPlaylist.directive.html',
-    restrict: 'AE'
+    restrict: 'AE',
+    controller: 'CurrentPlaylistCtrl',
+    controllerAs: 'currentPlaylist'
   };
   return directive;
 
