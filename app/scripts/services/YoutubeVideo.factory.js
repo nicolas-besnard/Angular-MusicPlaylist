@@ -88,7 +88,7 @@
       });
     }
 
-    function launchPlayer (id, title) {
+    function launchPlayer (id) {
       if (id != youtube.currentSongId) {
         youtube.currentSongId = id;
         youtube.player.loadVideoById(id);

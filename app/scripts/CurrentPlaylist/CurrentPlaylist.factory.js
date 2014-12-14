@@ -66,10 +66,9 @@
         currentSong = id;
         var song = songs[id];
 
-        YoutubeVideoService.launchPlayer(song.id, song.title);
+        YoutubeVideoService.launchPlayer(song.id);
 
-        PlayerTitleFactory.setTitle("pipi", "popo");
-        console.log("after", PlayerTitleFactory.author);
+        PlayerTitleFactory.setTitle(song.artist, song.title);
         controlsState();
       }
     }
