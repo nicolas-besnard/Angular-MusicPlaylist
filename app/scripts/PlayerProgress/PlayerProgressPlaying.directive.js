@@ -1,22 +1,26 @@
-'use strict';
+(function () {
+  'use strict';
 
-/**
- * @ngdoc directives
- * @name musicPlaylistApp.directives:PlayerLoaderFront
- * @description
- * # PlayerLoaderFront
- */
-angular.module('musicPlaylistApp')
-  .directive('playerProgressPlaying', function () {
-    return {
+  angular
+    .module('musicPlaylistApp')
+    .directive('playerProgressPlaying', PlayerProgressPlaying);
+
+  /* @ngInject */
+  function PlayerProgressPlaying() {
+    // Usage:
+    //
+    // Creates:
+    //
+    var directive = {
       restrict: 'A',
-
-      link: function (scope, elem, attrs) {
-        attrs.$observe('loaderWidth', function (value) {
-          elem.css({
-            'width': value + '%'
-          });
-        });
-      }
+      link: link
     };
-  });
+    return directive;
+
+    function link(scope, elem, attrs) {
+      attrs.$observe('loaderWidth', function (value) {
+        elem.css({'width': value + '%'});
+      });
+    }
+  }
+})();

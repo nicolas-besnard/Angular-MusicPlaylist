@@ -7,9 +7,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="music in musics">
-      <td ng-click="addToCurrentPlaylist(music.id, music.title)">AddToPlaylist</td>
-      <td ng-click="play(music.id)">play</td>
+    <tr ng-repeat="music in playlist.musics">
+      <td ng-click="playlist.addToCurrentPlaylist(music.id, music.title)">AddToPlaylist</td>
+      <td ng-click="playlist.play(music.id)">play</td>
       <td>{{music.title}}</td>
     </tr>
     </tbody>

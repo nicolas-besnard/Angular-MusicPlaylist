@@ -1,15 +1,18 @@
-'use strict';
+(function () {
+  'use strict';
 
-/**
- * @ngdoc function
- * @name musicPlaylistApp.controller:PlaylistCtrl
- * @description
- * # PlaylistCtrl
- * Controller of the musicPlaylistApp
- */
-angular.module('musicPlaylistApp')
-  .controller('PlaylistCtrl', function ($scope, $routeParams, YoutubeVideoService, CurrentPlaylist) {
-    $scope.musics = [{
+  angular
+    .module('musicPlaylistApp')
+    .controller('PlaylistCtrl', PlaylistCtrl);
+
+  PlaylistCtrl.$inject = ['$routeParams', 'CurrentPlaylist'];
+
+  /* @ngInject */
+  function PlaylistCtrl($routeParams, CurrentPlaylist) {
+    /* jshint validthis: true */
+    var playlist = this;
+
+    playlist.musics = [{
       id: 'Tdw7kxD8eUc',
       title: "AL Green - I'm So Tired of Being Alone"
     }, {
@@ -17,16 +20,14 @@ angular.module('musicPlaylistApp')
       title: 'Kris Allen - Lost'
     }];
 
-    $scope.play = function(id) {
-      console.log("PLAY", id);
-      YoutubeVideoService.launchPlayer(id, "title");
-      //this.$emit(YoutubeVideoNotifications.ChangeVideo, id);
+    playlist.play = function(id) {
+      CurrentPlaylist.addAndPlay(id, "title");
     };
 
-    $scope.addToCurrentPlaylist = function(id, title) {
-      console.log("addSong");
+    playlist.addToCurrentPlaylist = function(id, title) {
       CurrentPlaylist.addSong(id, title);
     };
 
-    $scope.id = $routeParams.id;
-  });
+    playlist.id = $routeParams.id;
+  }
+})();

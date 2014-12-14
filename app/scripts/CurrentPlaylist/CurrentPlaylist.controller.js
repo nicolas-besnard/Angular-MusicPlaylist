@@ -1,21 +1,23 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('musicPlaylistApp')
-  .controller('CurrentPlaylistCtrl', CurrentPlaylistCtrl);
+  angular
+    .module('musicPlaylistApp')
+    .controller('CurrentPlaylistCtrl', CurrentPlaylistCtrl);
 
-CurrentPlaylistCtrl.$inject = ['CurrentPlaylist', 'YoutubeVideoService'];
+  CurrentPlaylistCtrl.$inject = ['CurrentPlaylist', 'YoutubeVideoService'];
 
-/* @ngInject */
-function CurrentPlaylistCtrl(CurrentPlaylist) {
-  /* jshint validthis: true */
-  var vm = this;
+  /* @ngInject */
+  function CurrentPlaylistCtrl(CurrentPlaylist) {
+    /* jshint validthis: true */
+    var vm = this;
 
-  vm.songs = CurrentPlaylist.songs;
-  vm.currentId = 0;
-  vm.play = play;
+    vm.songs = CurrentPlaylist.songs;
+    vm.currentId = 0;
+    vm.play = play;
 
-  function play(id) {
-    CurrentPlaylist.playSong(id);
+    function play(id) {
+      CurrentPlaylist.playSong(id);
+    }
   }
-}
+})();

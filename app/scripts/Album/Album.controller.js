@@ -21,16 +21,11 @@
     }];
 
     album.play = function(id) {
-      console.log("PLAY", id);
       CurrentPlaylist.addAndPlay(id, "title");
-
-      //this.$emit(YoutubeVideoNotifications.ChangeVideo, id);
     };
 
     album.addToCurrentPlaylist = function(id, title) {
-      console.log("addSong");
       CurrentPlaylist.addSong(id, title);
     };
-    ////////////////
   }
 })();

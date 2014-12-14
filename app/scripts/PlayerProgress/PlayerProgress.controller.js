@@ -1,15 +1,14 @@
-'use strict';
+(function () {
+  'use strict';
 
-/**
- * @ngdoc function
- * @name musicPlaylistApp.controller:PlayerProgressCtrl
- * @description
- * # PlayerProgressCtrl
- * Controller of the musicPlaylistApp
- */
-angular.module('musicPlaylistApp')
-  .controller('PlayerProgressCtrl', function ($scope, YoutubeVideoService) {
+  angular
+    .module('musicPlaylistApp')
+    .controller('PlayerProgressCtrl', PlayerProgressCtrl);
 
+  PlayerProgressCtrl.$inject = ['$scope', 'YoutubeVideoService'];
+
+  /* @ngInject */
+  function PlayerProgressCtrl($scope, YoutubeVideoService) {
     $scope.$watch(function() {
         return YoutubeVideoService.youtube.currentTime;
       },
@@ -19,5 +18,5 @@ angular.module('musicPlaylistApp')
         $scope.percentTotal = YoutubeVideoService.youtube.percentTotal;
         $scope.percentTime = YoutubeVideoService.youtube.percentTime;
       }, true);
-
-  });
+  }
+})();
