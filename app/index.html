@@ -67,13 +67,12 @@
 
     <!-- side body -->
     <div class="side-body">
+
       <!-- this you can place your search result with ajax -->
       <div class="side-wrapper side-wrapper-large">
         <div class="side-wrapper-status lead">No result, please start typing!</div>
         <div class="side-wrapper-result">
           <!-- just sample result -->
-
-
           <div class="panel panel-default bordered-none no-radius">
             <a href="#" class="panel-body-heading full-line">
               <div class="pb-object pb-object-circle pb-object-sm">
@@ -428,7 +427,60 @@
           target = $this.parent().parent();
 
       $(target).removeClass('open');
-    })
+    });
+
+    $('#toggle-search').on('click', function(e){
+      e.preventDefault();
+
+      var brand = $('#brand'),
+          form_search = $('#smart-search');
+
+      brand.toggleClass('hide');
+      form_search.toggleClass('hide').find('input').focus().val('');
+      $(this).toggleClass('active');
+    });
+
+    $('#smart-search > .form-control')
+      .on('focus', function() {
+        var $this = $(this),
+            target = $this.attr('data-target');
+
+        $(target).addClass('open').fadeIn();
+      })
+      .on('focusout', function(e){
+        var $this = $(this),
+            target = $this.attr('data-target');
+
+        $(target).removeClass('open active').fadeOut();
+        $this.val('');
+
+        $('.side-wrapper-status').fadeIn(300);
+        $('.side-wrapper-result').hide();
+      })
+      .on('keyup', function(e){
+        var $this = $(this),
+            target = $this.attr('data-target');
+
+        if ($this.val() == '') {
+          $(target).removeClass('active');
+
+          $('.side-wrapper-status').fadeIn(300);
+          $('.side-wrapper-result').hide();
+        }
+        else{
+          $(target).addClass('active');
+
+          $('.side-wrapper-status').hide();
+          $('.side-wrapper-result').fadeIn(300);
+
+          // call ajax search below here and place result in side-wrapper-result
+        }
+      });
+    $('#smart-search').on('submit', function(e){
+      e.preventDefault();
+    });
+
+
   });
 </script>
 </body>
