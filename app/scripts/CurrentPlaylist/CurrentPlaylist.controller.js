@@ -5,7 +5,7 @@
     .module('musicPlaylistApp')
     .controller('CurrentPlaylistCtrl', CurrentPlaylistCtrl);
 
-  CurrentPlaylistCtrl.$inject = ['CurrentPlaylist', 'YoutubeVideoService'];
+  CurrentPlaylistCtrl.$inject = ['CurrentPlaylist'];
 
   /* @ngInject */
   function CurrentPlaylistCtrl(CurrentPlaylist) {
