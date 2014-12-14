@@ -5,10 +5,10 @@
     .module('musicPlaylistApp')
     .factory('CurrentPlaylist', CurrentPlaylist);
 
-  CurrentPlaylist.$inject = ['$rootScope', 'YoutubeVideoService'];
+  CurrentPlaylist.$inject = ['$rootScope', 'YoutubeVideoService', 'PlayerTitleFactory'];
 
   /* @ngInject */
-  function CurrentPlaylist($rootScope, YoutubeVideoService) {
+  function CurrentPlaylist($rootScope, YoutubeVideoService, PlayerTitleFactory) {
 
     var songs = [{
       'id': 'akCgDFXN1ic',
@@ -68,6 +68,8 @@
 
         YoutubeVideoService.launchPlayer(song.id, song.title);
 
+        PlayerTitleFactory.setTitle("pipi", "popo");
+        console.log("after", PlayerTitleFactory.author);
         controlsState();
       }
     }
