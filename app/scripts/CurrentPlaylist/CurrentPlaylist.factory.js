@@ -30,6 +30,7 @@ function CurrentPlaylist($rootScope, YoutubeVideoService) {
     playSong: playSong,
     playNext: playNext,
     playPrevious: playPrevious,
+    addAndPlay: addAndPlay,
     play: play,
     pause: pause,
 
@@ -80,6 +81,11 @@ function CurrentPlaylist($rootScope, YoutubeVideoService) {
     if (currentSong - 1 >= 0) {
       playSong(currentSong - 1);
     }
+  }
+
+  function addAndPlay(id, title) {
+    addSong(id, title);
+    playSong(nbSongs - 1);
   }
 
   function play() {

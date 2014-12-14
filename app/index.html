@@ -379,6 +379,7 @@
 <script type="text/javascript" src="scripts/CurrentPlaylist/CurrentPlaylist.factory.js"></script>
 <script type="text/javascript" src="scripts/CurrentPlaylist/CurrentPlaylist.directive.js"></script>
 <script type="text/javascript" src="scripts/RightMenu/AlbumsMenu/AlbumsMenu.directive.js"></script>
+<script src="scripts/Album/Album.controller.js"></script>
 <!-- endbuild -->
 
 
@@ -409,7 +410,7 @@
       $this.toggleClass('active');
       content_main.toggleClass('content-main-md');
       content_aside.toggleClass('open');
-    })
+    });
 
     $('.side-nav-child').prev().on('click', function (e) {
       e.preventDefault();
@@ -418,7 +419,8 @@
           target = $this.attr('href');
 
       $(target).addClass('open');
-    })
+    });
+
     $('.side-nav-back').on('click', function (e) {
       e.preventDefault();
       var $this = $(this),

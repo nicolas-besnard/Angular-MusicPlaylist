@@ -1,0 +1,17 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="music in album.musics">
+      <td ng-click="album.addToCurrentPlaylist(music.id, music.title)">AddToPlaylist</td>
+      <td ng-click="album.play(music.id)">play</td>
+      <td>{{music.title}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
