@@ -1,0 +1,28 @@
+<section id="content-aside" class="content-aside">
+  <div class="content-module fixed-header">
+
+    <div class="module-header">
+      <h3 class="module-title">Current Playlist</h3>
+    </div>
+
+    <div class="module-body">
+      <div class="chats-module">
+        <div class="cm-contact" ng-controller="CurrentPlaylistCtrl as currentPlaylist">
+          <div class="cm-contact-separate">Musics</div>
+
+          <!-- CELL -->
+          <a href="" class="cm-contact-item" ng-repeat="song in currentPlaylist.songs" ng-click="currentPlaylist.play($index)">
+            <div class="cmci-avatar">
+              <img ng-src="{{song.artwork}}" alt="">
+            </div>
+            <p class="cmci-name">{{song.title}}
+              <small>{{song.artist}}</small>
+            </p>
+          </a>
+          <!-- /CELL -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
