@@ -1,0 +1,18 @@
+<div class="side-wrapper-result">
+  <div class="panel panel-default bordered-none no-radius" ng-repeat="song in searchResults.results">
+    <a href="#" class="panel-body-heading full-line" >
+      <div class="pb-object pb-object-circle pb-object-sm">
+        <img ng-src="{{song.thumbnail}}" alt="">
+      </div>
+      <!-- /pb-object -->
+      <h3 class="pb-title pb-title-sm" style="white-space: inherit;">
+        {{song.title}}
+      </h3>
+
+    </a>
+  </div>
+
+</div>
+
+
+

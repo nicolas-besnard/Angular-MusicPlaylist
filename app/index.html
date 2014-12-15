@@ -58,9 +58,7 @@
 
       <!-- form search, remove class hide if you not place your brand -->
       <!-- (recomended: dont change the id value) -->
-      <form id="smart-search" class="side-form hide" role="form">
-        <input type="text" class="form-control" data-target=".side-wrapper" placeholder="Smart Finder">
-      </form>
+      <search-form></search-form>
       <!-- /side wrapper -->
     </div>
     <!-- /side header -->
@@ -71,24 +69,7 @@
       <!-- this you can place your search result with ajax -->
       <div class="side-wrapper side-wrapper-large">
         <div class="side-wrapper-status lead">No result, please start typing!</div>
-        <div class="side-wrapper-result">
-          <!-- just sample result -->
-          <div class="panel panel-default bordered-none no-radius">
-            <a href="#" class="panel-body-heading full-line">
-              <div class="pb-object pb-object-circle pb-object-sm">
-                <!--<img src="assets/app/img/avatar3.png" alt="">-->
-              </div>
-              <!-- /pb-object -->
-              <h3 class="pb-title pb-title-sm">
-                Item name
-                <small>Lorem ipsum dolor sit amet, consectetur</small>
-              </h3>
-              <!-- /pb-title -->
-            </a><!-- /panel-body-heading -->
-          </div>
-          <!-- /panel -->
-        </div>
-        <!-- /side-wrapper-result -->
+        <search-results></search-results>
       </div>
       <!-- /side wrapper -->
 
@@ -380,6 +361,11 @@
 <script src="scripts/PlayerTitle/PlayerTitle.directive.js"></script>
 <script src="scripts/PlayerTitle/PlayerTitle.factory.js"></script>
 <script src="scripts/PlayerTitle/PlayerTitle.controller.js"></script>
+<script src="scripts/Search/SearchForm.directive.js"></script>
+<script src="scripts/services/YoutubeSearch.factory.js"></script>
+<script src="scripts/SearchResults/SearchResults.factory.js"></script>
+<script src="scripts/SearchResults/SearchResults.directive.js"></script>
+<script src="scripts/SearchResults/SearchResults.controller.js"></script>
 <!-- endbuild -->
 
 
@@ -440,42 +426,6 @@
       $(this).toggleClass('active');
     });
 
-    $('#smart-search > .form-control')
-      .on('focus', function() {
-        var $this = $(this),
-            target = $this.attr('data-target');
-
-        $(target).addClass('open').fadeIn();
-      })
-      .on('focusout', function(e){
-        var $this = $(this),
-            target = $this.attr('data-target');
-
-        $(target).removeClass('open active').fadeOut();
-        $this.val('');
-
-        $('.side-wrapper-status').fadeIn(300);
-        $('.side-wrapper-result').hide();
-      })
-      .on('keyup', function(e){
-        var $this = $(this),
-            target = $this.attr('data-target');
-
-        if ($this.val() == '') {
-          $(target).removeClass('active');
-
-          $('.side-wrapper-status').fadeIn(300);
-          $('.side-wrapper-result').hide();
-        }
-        else{
-          $(target).addClass('active');
-
-          $('.side-wrapper-status').hide();
-          $('.side-wrapper-result').fadeIn(300);
-
-          // call ajax search below here and place result in side-wrapper-result
-        }
-      });
     $('#smart-search').on('submit', function(e){
       e.preventDefault();
     });

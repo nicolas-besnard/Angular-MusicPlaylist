@@ -20,9 +20,7 @@
     function search(term) {
       var baseUrl = "http://gdata.youtube.com/feeds/api/videos?max-results=10&start-index=1&alt=json&q=";
 
-      $http(baseurl + term)
-        .success(successSearch)
-        .error(errorSearch);
+      return $http.get(baseUrl + term);
     }
 
     function successSearch(data, status, headers, config) {
