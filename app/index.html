@@ -424,6 +424,10 @@
       brand.toggleClass('hide');
       form_search.toggleClass('hide').find('input').focus().val('');
       $(this).toggleClass('active');
+
+      if (!$(this).hasClass('active')) {
+        $('.side-wrapper').hide();
+      }
     });
 
     $('#smart-search').on('submit', function(e){

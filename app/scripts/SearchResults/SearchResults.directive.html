@@ -1,13 +1,18 @@
 <div class="side-wrapper-result">
-  <div class="panel panel-default bordered-none no-radius" ng-repeat="song in searchResults.results">
-    <a href="#" class="panel-body-heading full-line" >
-      <div class="pb-object pb-object-circle pb-object-sm">
-        <img ng-src="{{song.thumbnail}}" alt="">
+  <div
+    class="panel panel-default bordered-none no-radius"
+    ng-repeat="song in searchResults.results">
+
+    <a href="#" class="panel-body-heading full-line" style="padding: 0;">
+      <div class="pb-object pb-object-circle pb-object-sm" style="width: 50px; height: 100%; position: absolute;">
+        <img ng-src="{{song.thumbnail}}" alt="" style="margin-top: 0; height: 100%; width: 100%; border-radius: 0;">
       </div>
       <!-- /pb-object -->
-      <h3 class="pb-title pb-title-sm" style="white-space: inherit;">
+      <h3 class="pb-title pb-title-sm" style="white-space: inherit; padding-top: 10px; margin-left: 60px;">
         {{song.title}}
       </h3>
+
+      <div>OTHER</div>
 
     </a>
   </div>
